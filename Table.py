@@ -20,7 +20,7 @@ def perform_search(event=None):  # Modified to accept an event parameter
     taskMgr.delete(*taskMgr.get_children())
     loadingRowiid = 999
     taskMgr.insert(parent='', index='end', iid=loadingRowiid, text='',
-               values=("Loading....", "", "", "", "", ""))
+            values=("Loading....", "", "", "", "", ""))
     
 
     # Get the search keyword from the entry widget
