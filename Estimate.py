@@ -4,6 +4,20 @@ from tkinter import *
 from tkinter import ttk
 from win32 import win32gui, win32process
 
+# this function will not be used although it increases accuracy, it drastically increases search time
+def get_cpu_percent(p):
+    list_of_percentages = []
+    for i in range(5):
+        p_cpu = p.cpu_percent(interval=0.1)
+        list_of_percentages.append(p_cpu)
+
+    # pop the first index for better accuracy, this is because with interval value greater than 0, 
+    # cpu_percent() will block the current process. During the blocking period, the cpu percent is 0,
+    # and so 0.0 will be always be appended into the first index.
+    list_of_percentages.pop(0)
+
+    # return the average
+    return float(sum(list_of_percentages))/len(list_of_percentages)
 
 # Initialize NVML
 def estimatePower(application, gui=None):
@@ -33,7 +47,9 @@ def estimatePower(application, gui=None):
 
                 # Get the CPU and memory usage of the process
                 mem_percent = process.memory_percent()
-                cpu_percent = process.cpu_percent(interval=0.0001)
+                cpu_percent = process.cpu_percent(interval=0.1)
+
+
                 memory_info = process.memory_info()
                 i += 1
 
