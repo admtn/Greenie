@@ -55,13 +55,16 @@ def estimatePower(application, gui=None):
 
                 # Iterate over the available GPUs
                 gpu_power = 0.0
-                for gpu_index in range(num_gpus):
-                    handle = py3nvml.py3nvml.nvmlDeviceGetHandleByIndex(gpu_index)
-                    utilization = py3nvml.py3nvml.nvmlDeviceGetUtilizationRates(handle)
-                    gpu_utilization = utilization.gpu
+                try:
+                    for gpu_index in range(num_gpus):
+                        handle = py3nvml.py3nvml.nvmlDeviceGetHandleByIndex(gpu_index)
+                        utilization = py3nvml.py3nvml.nvmlDeviceGetUtilizationRates(handle)
+                        gpu_utilization = utilization.gpu
 
-                    # Assuming the GPU power consumption is linearly related to GPU utilization
-                    gpu_power += gpu_utilization
+                        # Assuming the GPU power consumption is linearly related to GPU utilization
+                        gpu_power += gpu_utilization
+                except:
+                    gpu_power = 0.0
 
                 # Estimate power consumption based on CPU, memory, and GPU usage
                 # Generally, computers use between 30 and 70 watts (W) of electricity, depending on the model. 
