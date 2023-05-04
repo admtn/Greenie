@@ -46,6 +46,8 @@ frame.pack(fill=BOTH, expand=True)
 
 # Create the search entry widget
 search_entry = Entry(frame, width=30)
+search_entry.insert(0, 'Enter a process name...')
+search_entry.configure(state='disabled')
 search_entry.grid(row=0, column=0, padx=10, pady=10)
 
 # Bind the <Return> event to perform_search()
@@ -54,6 +56,14 @@ search_entry.bind("<Return>", perform_search)
 # Create the search button
 search_button = Button(frame, text='Search', command=perform_search)
 search_button.grid(row=0, column=1, padx=10, pady=10)
+
+
+
+focus_in = search_entry.bind('<Button-1>', lambda x: on_focus_in(search_entry))
+focus_out = search_entry.bind(
+    '<FocusOut>', lambda x: on_focus_out(search_entry, 'Enter a process name...'))
+
+
 
 # Create the task manager table
 taskMgr = ttk.Treeview(frame)

@@ -1,40 +1,35 @@
-from tkinter import *
+import tkinter as tk
 
-ws = Tk()
-frame = Frame(ws)
-Label(frame,text='Enter Word to Find:').pack(side=LEFT)
-search_entry = Entry(frame)
-
-search_entry.pack(side=LEFT, fill=BOTH, expand=1)
-
-search_entry.focus_set()
-
-search_button = Button(frame, text='Find')
-search_button.pack(side=RIGHT)
-frame.pack(side=TOP)
-
-txt = Text(ws)
-
-txt.insert('1.0','''Enter here...''')
-txt.pack(side=BOTTOM)
+def on_focus_in(entry):
+    if entry.cget('state') == 'disabled':
+        entry.configure(state='normal')
+        entry.delete(0, 'end')
 
 
-def find():
-	
-	txt.tag_remove('found', '1.0', END)
-	ser = search_entry.get()
-	if ser:
-		idx = '1.0'
-		while 1:
-			idx = txt.search(ser, idx, nocase=1,
-							stopindex=END)
-			if not idx: break
-			lastidx = '%s+%dc' % (idx, len(ser))
-			
-			txt.tag_add('found', idx, lastidx)
-			idx = lastidx
-		txt.tag_config('found', foreground='blue')
-	search_entry.focus_set()
-search_button.config(command=find)
+def on_focus_out(entry, placeholder):
+    if entry.get() == "":
+        entry.insert(0, placeholder)
+        entry.configure(state='disabled')
 
-ws.mainloop()
+
+root = tk.Tk()
+
+entry_x = tk.Entry(root, width=50)
+entry_x.pack(pady=10)
+entry_x.insert(0, "Place Holder X")
+entry_x.configure(state='disabled')
+
+entry_y = tk.Entry(root, width=50)
+entry_y.pack(pady=10)
+entry_y.insert(0, "Place Holder Y")
+entry_y.configure(state='disabled')
+
+x_focus_in = entry_x.bind('<Button-1>', lambda x: on_focus_in(entry_x))
+x_focus_out = entry_x.bind(
+    '<FocusOut>', lambda x: on_focus_out(entry_x, 'Place Holder X'))
+
+y_focus_in = entry_y.bind('<Button-1>', lambda x: on_focus_in(entry_y))
+y_focus_out = entry_y.bind(
+    '<FocusOut>', lambda x: on_focus_out(entry_y, 'Place Holder Y'))
+
+root.mainloop()
