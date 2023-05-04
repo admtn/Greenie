@@ -62,13 +62,13 @@ It's important to note that these are rough average values, and the actual power
 
 **Memory\_power** : The power consumption per unit of memory usage can vary within a range depending on the specific memory type and configuration. Here is a rough range for memory power consumption:
 
-For DDR3 memory: Approximately 0.5 to 1.5 watts per gigabyte (W/GB) of memory usage.
+- For DDR3 memory: Approximately 0.5 to 1.5 watts per gigabyte (W/GB) of memory usage.
 
-For DDR4 memory: Approximately 0.3 to 1.2 W/GB of memory usage.
+- For DDR4 memory: Approximately 0.3 to 1.2 W/GB of memory usage.
 
-For GDDR5 memory (graphics memory): Approximately 1.5 to 3.5 W/GB of memory usage.
+- For GDDR5 memory (graphics memory): Approximately 1.5 to 3.5 W/GB of memory usage.
 
-For HBM (High-Bandwidth Memory): Approximately 3 to 8 W/GB of memory usage.
+- For HBM (High-Bandwidth Memory): Approximately 3 to 8 W/GB of memory usage.
 
 The most common memory types used today are DDR4 for system memory and GDDR5 for graphics memory. As such, we will be using 1.2 watts as our placeholder value.
 
