@@ -1,6 +1,6 @@
 **Power Consumption Estimation Tool**
 
-This is a simple Python program that allows you to measure the power consumption of a specific application running on your computer. The program utilizes the **psutil** and **py3nvml** libraries to retrieve information about running processes, CPU usage, memory usage, and GPU utilization. It then estimates the power consumption based on these metrics. Note that this might be limited to NVIDIA GPU cores.
+This is a program that allows you to measure the power consumption of a specific application running on your computer. The program utilizes the **psutil** and **py3nvml** libraries to retrieve information about running processes, CPU usage, memory usage, and GPU utilization. It then estimates the power consumption based on these metrics. Note that this might be limited to NVIDIA GPU cores.
 
 **Prerequisites**
 
