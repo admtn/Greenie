@@ -2,7 +2,7 @@ import psutil
 import py3nvml
 from tkinter import *
 from tkinter import ttk
-from win32 import win32gui, win32process
+
 
 # this function will not be used although it increases accuracy, it drastically increases search time
 def get_cpu_percent(p):
@@ -98,5 +98,3 @@ def estimatePower(application, gui=None):
     # Clean up NVML
     py3nvml.py3nvml.nvmlShutdown()
 
-
-# estimatePower("chrome")
